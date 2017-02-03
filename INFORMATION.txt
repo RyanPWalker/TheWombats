@@ -11,5 +11,3 @@ email response
 Account honeymuffinspumpkinface@gmail.com
 
 Password thisisasecurepassword
-
-This is the most amazing project in the world
