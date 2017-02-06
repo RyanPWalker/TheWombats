@@ -1,0 +1,173 @@
+
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="account.html">
+<script type="text/javascript">
+
+form.addEventListener("submit", calculate, false);
+
+function calculate(event)
+{
+
+  event.preventDefault(); // Stops the form from submitting
+
+  var result = 0;
+  var A = 0;
+  var B = 5;
+  var C = 20;
+
+  if (document.getElementById("basic").checked == true)
+  	result += A;
+  if (document.getElementById("advanced").checked == true)
+  	result += B;
+  if (document.getElementById("premium").checked == true)
+  	result += C;  	
+
+   document.getElementById("total").value = 
+      "$" + result + ".00";
+}
+
+function validateForm() 
+{
+    var inpObj = document.getElementById("fullName");
+    if (inpObj.checkValidity() == false) {
+        document.getElementById("fullName").innerHTML = inpObj.validationMessage;
+    } else {
+        document.getElementById("fullName").innerHTML = "Input Accepted!";
+    }
+}
+
+function validateNumber()
+{
+	var input = document.getElementById("zipcode");
+
+	if (isNan(input))
+		document.getElementById("zipcode") = 
+	input.validationMessage;
+}
+	
+</script>
+
+</head>
+<body>
+
+<h1>Create Your Account Dawg</h1>
+
+<h2>Fill out the form with your information:</h2>
+
+<div>
+<form class="accountForm" onsubmit="return validateForm()">
+  <fieldset>
+    <legend><b>Buy</b></legend>
+    	<table>
+        <tr>
+          <th>Select Box</th>
+          <th>Stuff</th>
+          <th>Amount</th>
+        </tr>
+        <tr>
+        	<td><input type="checkbox" id="basic" onclick="calculate()"></td>
+        	<td>Basic account</td>
+        	<td>$0.00</td>
+        </tr>
+        <tr>
+       	    <td><input type="checkbox" id="advanced" onclick="calculate()"></td>
+        	<td>Advanced Account</td>
+        	<td>$5.00</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="premium" onclick="calculate()"></td>
+        	<td>Premium Account</td>
+        	<td>$20.00</td>
+        </tr>
+        <tr>
+		</table>
+		<table><tr><td>Total: <input type="text" id="total" readonly required></td></tr></table>
+		
+    <br>
+  </fieldset>
+</form>
+</div>
+
+<div>
+<h2>Buy My Stuff!</h2>
+<p>Fill out the information below and select your purchase!</p>
+<form  class="accountForm" onsubmit="return validateForm()" method="post" autocomplete="on">
+  <fieldset>
+    <legend><b>Personal Information</b></legend>
+    <table>
+      <tr>
+        <td>Full name:</td>
+        <td><input type="text" id="fullName" value="Johnny Appleseed" autofocus onfocus="this.value = ''" required=""><br></td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td><input type="text" id="address" value="123 Apple Road" onfocus="this.value = ''" required><br></td>
+      </tr>
+      <tr>
+        <td>City:</td>
+        <td><input type="text" id="city" value="Apple Valley" onfocus="this.value = ''" required><br></td>
+        </tr>
+        <tr>
+        	<td>State:</td>
+        	<td><input type="text" id="state" value="Washington" onfocus="this.value = ''" onclick="validateNumber()" required><br></td>
+        </tr>
+        <tr>
+        	<td>Zipcode:</td>
+        	<td><input type="text" id="zipcode" value="12345" onfocus="this.value = ''" onclick="validateNumber()" required><br></td>
+        </tr>
+        <tr>
+        	<td>Phone Number:</td>
+        	<td><input type="tel" id="phoneNumber" value="XXX-XXX-XXXX" onfocus="this.value = ''" onclick="validateNumber()" required><br></td>
+        </tr>
+    </table>
+  </fieldset>
+  <fieldset required>
+    <legend><b>Credit Card</b></legend>
+    <input type="radio" id="visa" name="creditCard" value="Visa" checked>Visa<br>
+    <input type="radio" id="masterCard" name="creditCard" value="Master Card"> Master Card<br>
+    <input type="radio" id="other" name="creditCard" value="Other"> Other
+  </fieldset>
+  <fieldset>
+    <legend><b>Credit Card Number:</b></legend>
+    <input type="text" id="creditCardNumber" value="1111-2222-3333-4444" onfocus="this.value = ''" onsubmit="return validateNumber()" required>
+    <br>
+  </fieldset>
+  <fieldset>
+    <legend><b>Credit Card Expiration:</b></legend>
+    <input type="month" id="creditCardExpiration" required>
+    <br>
+  </fieldset>
+  <fieldset>
+     <legend><b>Rate the stuff!</b></legend>
+    <select id="Type">
+      <option value="*****">*****</option>
+      <option value="****">****</option>
+      <option value="***">***</option>
+      <option value="**">**</option>
+      <option value="*">*</option>
+    </select>
+  </fieldset>
+  <fieldset>
+    <legend><b>Feedback?  Comments?</b></legend>
+    <textarea id="explanation" rows="5" cols="30" onfocus="this.value = ''">
+      Opinions...
+    </textarea>
+  </fieldset>
+    <br><br>
+    <input type="submit" value="Submit">
+    <input type="reset">
+</form>
+</div>
+
+
+<footer>
+<p>Created by: Ryan Walker</p>
+<p>Contact: wal13067@byui.edu</p>
+<p>Byu-Idaho -- Software Engineering</p>
+</footer>
+
+
+</body>
+</html>
