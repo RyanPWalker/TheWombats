@@ -5,13 +5,10 @@
 	<link rel="stylesheet" type="text/css" href="account.html">
 <script type="text/javascript">
 
-form.addEventListener("submit", calculate, false);
+form.addEventListener("submit", validateForm, false);
 
 function calculate(event)
 {
-
-  event.preventDefault(); // Stops the form from submitting
-
   var result = 0;
   var A = 0;
   var B = 5;
@@ -30,6 +27,8 @@ function calculate(event)
 
 function validateForm() 
 {
+	event.preventDefault(); // Stops the form from submitting
+
     var inpObj = document.getElementById("fullName");
     if (inpObj.checkValidity() == false) {
         document.getElementById("fullName").innerHTML = inpObj.validationMessage;
