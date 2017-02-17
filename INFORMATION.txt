@@ -1,3 +1,11 @@
+New Format:
+Start up page Use Case: Kayle
+Email Interaction : John
+Break up mode : Ryan
+Picture upload: Logan
+
+
+Old Ideas kinda rejected by Bro Barney:
 account
 user info
 login
