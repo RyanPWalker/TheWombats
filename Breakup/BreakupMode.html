@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="">
+	<style type="text/css">
+		.button {
+			  display: inline-block;
+			  padding: 15px 25px;
+			  font-size: 24px;
+			  cursor: pointer;
+			  text-align: center;
+			  text-decoration: none;
+			  outline: none;
+			  color: #fff;
+			  background-color: rgb(255, 145, 0);
+			  border: none;
+			  border-radius: 15px;
+			  box-shadow: 0 9px #999;
+		}
+	</style>
+	<script>
+
+		function changeColor(id) {
+    	//document.getElementById(id).style.background = "rgb(26,255,0)";
+    	    var background = document.getElementById(id).style.backgroundColor;
+    if (background == "rgb(255, 145, 0)") {
+        document.getElementById(id).style.background = "rgb(26,255,0)";
+    } else {
+        document.getElementById(id).style.background = "rgb(255,145,0)";
+    }
+		}
+
+		function loadDoc(choice)
+		{
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200)
+				{
+					document.getElementById("response").value = this.responseText;
+				}
+				else if (this.readyState == 4 && this.state != 200)
+				{
+					alert("error");
+				}
+			};
+
+			if (choice == 1)
+			{
+				xhttp.open("GET", "oneMessageBreakup.txt", true);
+   			document.getElementById("response").innerHTML = "We are breaking up.";
+   		}
+			else if (choice == 2)
+				xhttp.open("GET", "friendZonedBreakup.txt", true);
+			else if (choice == 3)
+				xhttp.open("GET", "passiveAggressivelyBreakup.txt", true);
+			else if (choice == 4)
+				xhttp.open("GET", "violentlyBreakup.txt", true);
+			xhttp.send();
+		}
+
+	</script>
+
+</head>
+<body>
+
+
+<h1>Welcome to the Friend Zone</h1>
+<p>Click this button to activate AJAX and break up.</p>
+<table id="breakup">
+	<fieldset>
+		<legend><b>Who is breaking up?</b></legend>
+		<button id="userBreakup" class="button" onclick="changeColor(userBreakup)">Me</button>
+		<button id="girlfriendBreakup" class="button" onclick="changeColor(girlfriendBreakup)">Her</button>
+	</fieldset>
+  <fieldset>
+     <legend><b>How would you like to break up?</b></legend>
+    <select name="Options" onchange="loadDoc(this.value)">
+    	<option>-Select-</option>
+      <option value="1">One-message breakup (You're a jerk)</option>
+      <option value="2">Friend-zoned</option>
+      <option value="3">Passive-aggressively</option>
+      <option value="4">Violently</option>
+    </select>
+  </fieldset>
+  <fieldset>
+    <legend><b>Response Text</b></legend>
+    <textarea id="response" rows="15" cols="30"></textarea>
+  </fieldset>
+</table>
+
+<p>Answer:</p>
+
+<form class="">
+  <table id="json"></table>
+</form>
+
+<br>
+<br>
+<footer>
+<p>Created by: Ryan Walker</p>
+<p>Contact: wal13067@byui.edu</p>
+<p>Byu-Idaho -- Software Engineering</p>
+</footer>
+
+
+</body>
+</html>
