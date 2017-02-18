@@ -14,23 +14,79 @@
 			  color: #fff;
 			  background-color: rgb(255, 145, 0);
 			  border: none;
-			  border-radius: 15px;
+			  border-radius: 50%;
 			  box-shadow: 0 9px #999;
 		}
+
+		.button:active {
+		  background-color: red;
+		  box-shadow: 0 5px #666;
+		  transform: translateY(4px);
+		}
+
+		.back
+{
+    background-color: #32a4e7;
+    color: black;
+    border: 25px black;
+    border-radius: 25px;
+    padding: 25px;
+    margin: 25px;
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+table 
+	 {
+   	font-family: arial, sans-serif;
+   	border-collapse: collapse;
+	 }
+
+td, th 
+   {
+    border: 1px solid black;
+    /*text-align: left;*/
+    padding: 8px;
+   }
+
+tr
+   {
+    background-color: #a8a8a8;
+   }
+
+body 
+   {
+    background-color: white;
+    background-repeat: no-repeat;
+    text-align: center;
+    border-style: none;
+   }
+
+h1 {
+    color: white;
+    font-family: verdana;
+    text-align: center;
+   }
+
+h3 {
+    color: white;
+    font-family: verdana;
+    text-align: center;
+   }
+
+p  {
+    color: white;
+    font-family: verdana;
+   }
 	</style>
 	<script>
 
 		function changeColor(id) {
-    	//document.getElementById(id).style.background = "rgb(26,255,0)";
-    	    var background = document.getElementById(id).style.backgroundColor;
-    if (background == "rgb(255, 145, 0)") {
-        document.getElementById(id).style.background = "rgb(26,255,0)";
-    } else {
-        document.getElementById(id).style.background = "rgb(255,145,0)";
-    }
+    	document.getElementById(id).style.background = "red";
 		}
 
-		function loadDoc(choice)
+		/*function loadDoc(choice)
 		{
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
@@ -56,21 +112,21 @@
 			else if (choice == 4)
 				xhttp.open("GET", "violentlyBreakup.txt", true);
 			xhttp.send();
-		}
+		}*/
 
 	</script>
 
 </head>
 <body>
 
-
+<form class="back">
 <h1>Welcome to the Friend Zone</h1>
 <p>Click this button to activate AJAX and break up.</p>
 <table id="breakup">
 	<fieldset>
 		<legend><b>Who is breaking up?</b></legend>
-		<button id="userBreakup" class="button" onclick="changeColor(userBreakup)">Me</button>
-		<button id="girlfriendBreakup" class="button" onclick="changeColor(girlfriendBreakup)">Her</button>
+		<button id="userBreakup" class="button" onclick="changeColor(this.id)">Me</button>
+		<button id="girlfriendBreakup" class="button" onclick="changeColor('girlfriendBreakup')">Her</button>
 	</fieldset>
   <fieldset>
      <legend><b>How would you like to break up?</b></legend>
@@ -87,6 +143,7 @@
     <textarea id="response" rows="15" cols="30"></textarea>
   </fieldset>
 </table>
+</form>
 
 <p>Answer:</p>
 
